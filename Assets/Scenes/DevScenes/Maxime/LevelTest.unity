@@ -30294,15 +30294,5 @@ PrefabInstance:
       propertyPath: CenterObj
       value: 
       objectReference: {fileID: 523824253}
-    - target: {fileID: 6984067390289954858, guid: 7c89d5773e803be4d996eb89e10d7925,
-        type: 3}
-      propertyPath: x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 6984067390289954858, guid: 7c89d5773e803be4d996eb89e10d7925,
-        type: 3}
-      propertyPath: y
-      value: 45
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c89d5773e803be4d996eb89e10d7925, type: 3}

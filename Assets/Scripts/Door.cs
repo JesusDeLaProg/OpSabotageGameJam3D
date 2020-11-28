@@ -9,6 +9,10 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag != "Player")
+        {
+            return;
+        }
         if (isOpen)
         {
             Inventory.Instance.Pickup(ItemType.Key);
@@ -28,6 +32,10 @@ public class Door : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.tag != "Player")
+        {
+            return;
+        }
         MessageView.Instance.SetMessage("");
     }
 }
