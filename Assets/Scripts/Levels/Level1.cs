@@ -11,8 +11,11 @@ public class Level1 : Level
 
     public async override Task Setup()
     {
-        await Task.Delay(1000);
-        var awaiter = Task.Delay(5000).GetAwaiter();
-     //   awaiter.OnCompleted(() => EndLevel(true));
+        
+    }
+
+    public async override Task PlayEndLevelTransition(bool? victory)
+    {
+
     }
 }

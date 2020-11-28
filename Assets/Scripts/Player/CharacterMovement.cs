@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class CharacterMovement : MonoBehaviour
 {
 
+    public static bool Active = false;
+
     private Vector2 _direction;
 
     [SerializeField] private float _speed = 4;
@@ -19,6 +21,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!Active) return;
         UpdatePlayerMovement();
         ApplyGravity();
     }
