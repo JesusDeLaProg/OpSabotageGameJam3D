@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    Level currentLevel;
+    public Level currentLevel;
     HUD currentHUD;
 
     private bool LevelEndTransitionStarted = false;
@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
         LevelEndTransitionEnded = false;
         HUDTransitionStarted = false;
         HUDTransitionEnded = false;
-        currentLevel = FindObjectOfType<Level>();
+        currentLevel = Level.Instance;
         LoadHUD(currentLevel.HUD);
         currentLevel.LevelSetupFinished += (object level) => { Debug.Log("Level Manager : Level setup finished"); }; // Activate Player Controller
 
