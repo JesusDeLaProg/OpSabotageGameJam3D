@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
+    public static bool Active = false;
+
     private Vector2 _direction;
 
     [SerializeField] private float _speed = 4;
     [SerializeField] private float _turnSpeed = 2f;
     CharacterController _characterController;
 
-    public Transform[] PathPoints;
+    public Transform[] PathPoints = { };
     public bool Loop = false;
     public bool PathReverse = false;
 
@@ -21,6 +23,7 @@ public class AIController : MonoBehaviour
 
     public void OnDrawGizmos()
     {
+        if (PathPoints == null || PathPoints.Length == 0) return;
         Gizmos.color = Color.green;
         Vector3 position;
         if(pathPositions == null || pathPositions.Count == 0)
@@ -28,6 +31,7 @@ public class AIController : MonoBehaviour
             position = transform.position;
             foreach (var point in PathPoints)
             {
+                if (point == null) return;
                 Gizmos.DrawLine(position, point.position);
                 position = point.position;
             }
@@ -60,6 +64,8 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!Active) return;
+
         Vector2 currentPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 target = new Vector2(currentTarget.x, currentTarget.z);
         Vector2 vectorToTarget = target - currentPos;
@@ -72,6 +78,11 @@ public class AIController : MonoBehaviour
             MoveToNextTarget();
         }
         UpdatePlayerMovement();
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Player")) Level.Instance.EndLevel(false);
     }
 
     private void UpdatePlayerMovement()

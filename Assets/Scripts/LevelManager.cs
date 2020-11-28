@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
     private bool HUDTransitionStarted = false;
     private bool HUDTransitionEnded = false;
 
+    private string NextLevel = "";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,17 +43,18 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Level Manager : Level Ended (" + (victory.HasValue ? (victory.Value ? "Victory" : "Defeat") : "Neutral") + ")");
             // Deactivate Player controler
             LevelEndTransitionStarted = true;
+            NextLevel = (!victory.HasValue || victory.Value) ? currentLevel.NextLevelName : currentLevel.SceneName;
             if (victory.HasValue)
             {
                 if (victory.Value && currentLevel.VictoryHUD != null)
                 {
-                    Debug.Log("Level Manager : HUD Loaded");
+                    Debug.Log("Level Manager : Loading Victory HUD");
                     HUDTransitionStarted = true;
                     LoadHUD(currentLevel.VictoryHUD);
                 }
                 else if (!victory.Value && currentLevel.DefeatHUD != null)
                 {
-                    Debug.Log("Level Manager : HUD Loaded");
+                    Debug.Log("Level Manager : Loading Defeat HUD");
                     HUDTransitionStarted = true;
                     LoadHUD(currentLevel.DefeatHUD);
                 }
@@ -61,7 +64,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Level Manager : Level transition ended");
             LevelEndTransitionEnded = true;
-            if (!HUDTransitionStarted || HUDTransitionEnded) LoadScene(currentLevel.NextLevelName);
+            if (!HUDTransitionStarted || HUDTransitionEnded) LoadScene(NextLevel);
         };
     }
 
@@ -72,7 +75,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Level Manager : HUD transition ended");
             HUDTransitionEnded = true;
-            if (LevelEndTransitionStarted && LevelEndTransitionEnded) LoadScene(currentLevel.NextLevelName);
+            if (LevelEndTransitionStarted && LevelEndTransitionEnded) LoadScene(NextLevel);
         };
     }
 
