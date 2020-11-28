@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class CharacterMovement : MonoBehaviour
 {
 
+    public static bool Active = false;
+
     private Vector2 _direction;
 
     [SerializeField] private float _speed = 4;
@@ -21,6 +23,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!Active) return;
         UpdatePlayerMovement();
         ApplyGravity();
     }
@@ -37,12 +40,15 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move), Time.fixedDeltaTime * _turnSpeed * move.magnitude);
             var speed = _speed;
             _animator.SetFloat("Speed", 0.2f);
-            float playBackSpeed = 0.25f *1;
-            Debug.Log("Playback Speed:" + _direction.magnitude);// move.magnitude / (speed * Time.fixedDeltaTime));
             _animator.speed = _direction.magnitude * 2f;
-            Mathf.Clamp(playBackSpeed, 0.5f, 1.5f);
-            _characterController.Move(move * speed * Time.fixedDeltaTime);
 
+
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(transform.position + move.normalized * 1f, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+            {
+                _characterController.Move(move * speed * Time.fixedDeltaTime);
+            }
         }
         else
         {
