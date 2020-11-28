@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -684,7 +684,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &14824021
 PrefabInstance:
@@ -1064,7 +1064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20803316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 4.82, z: -15.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11051,7 +11051,7 @@ Transform:
   - {fileID: 1082229260}
   - {fileID: 1935716534}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &737520071
 GameObject:
@@ -12243,7 +12243,7 @@ Transform:
   - {fileID: 1375436678}
   - {fileID: 6487715652576617917}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &809105738
 PrefabInstance:
@@ -21264,6 +21264,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1508134096}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1511177384
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1277072242254357264, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.9625945
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.62442
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 15177798c8bb53f4d92fc7949220e4be, type: 3}
 --- !u!1001 &1523681440
 PrefabInstance:
   m_ObjectHideFlags: 0
