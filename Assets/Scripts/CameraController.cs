@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
         _direction = context.ReadValue<Vector2>();
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         x += _direction.x * RotationsSpeed;
         y += _direction.y * RotationsSpeed;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8724303306889882372}
   - component: {fileID: 5673735322679174305}
   - component: {fileID: 7591344383261151339}
+  - component: {fileID: 70478569621853297}
   m_Layer: 0
   m_Name: CloudCorner
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &70478569621853297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239655539598930366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 83.40463, y: 83.40474, z: 78.7402}
+  m_Center: {x: -41.702316, y: -41.70237, z: 39.3701}

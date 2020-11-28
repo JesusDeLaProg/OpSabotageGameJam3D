@@ -7,7 +7,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 _direction;
 
     [SerializeField] private float _speed = 4;
-    [SerializeField] private float _turnSpeed = 2f;
+    [SerializeField] private float _turnSpeed = 5f;
     CharacterController _characterController;
 
     // Start is called before the first frame update
@@ -17,9 +17,10 @@ public class CharacterMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         UpdatePlayerMovement();
+        ApplyGravity();
     }
     
     private void UpdatePlayerMovement()
@@ -30,11 +31,8 @@ public class CharacterMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move), Time.deltaTime * _turnSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move), Time.fixedDeltaTime * _turnSpeed * move.magnitude);
             var speed = _speed;
-
-            //Apply gravity 
-            move.y += Physics.gravity.y * Time.fixedDeltaTime * 5f;
 
             _characterController.Move(move * speed * Time.fixedDeltaTime);
 
@@ -46,7 +44,11 @@ public class CharacterMovement : MonoBehaviour
         }
    
     }
-
+    private void ApplyGravity()
+    {
+        //Apply gravity 
+        _characterController.Move(Physics.gravity * Time.fixedDeltaTime);
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         _direction = context.ReadValue<Vector2>();
