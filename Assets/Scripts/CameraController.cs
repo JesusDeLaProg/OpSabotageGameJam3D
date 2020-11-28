@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class CameraController : MonoBehaviour
 
     public float RotationsSpeed = 5.0f;
 
+    Vector2 _direction;
+
     float x;
     float y;
 
@@ -29,11 +32,15 @@ public class CameraController : MonoBehaviour
         _cameraOffsetRayon = dist;
     }
 
-    // LateUpdate is called after Update methods
-    void LateUpdate()
+    public void OnMove(InputAction.CallbackContext context)
     {
-        x += Input.GetAxis("Horizontal");
-        y += Input.GetAxis("Vertical");
+        _direction = context.ReadValue<Vector2>();
+    }
+
+    private void FixedUpdate()
+    {
+        x += _direction.x * RotationsSpeed;
+        y += _direction.y * RotationsSpeed;
         y = Mathf.Clamp(y, 0, 85f);
         var vec = CenterObj.transform.forward;
         var quat = Quaternion.Euler(-y, x, 0);

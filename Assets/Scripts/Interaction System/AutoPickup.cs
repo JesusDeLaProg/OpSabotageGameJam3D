@@ -20,6 +20,8 @@ public class AutoPickup : MonoBehaviour, IInteractble
 
     public void OnInteract()
     {
+        Inventory.Instance.Pickup(GetComponent<Item>());
+        Destroy(gameObject);
         Debug.Log("Auto Pickup");
     }
 }

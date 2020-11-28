@@ -13,6 +13,6 @@ public class Level1 : Level
     {
         await Task.Delay(1000);
         var awaiter = Task.Delay(5000).GetAwaiter();
-        awaiter.OnCompleted(() => EndLevel(true));
+     //   awaiter.OnCompleted(() => EndLevel(true));
     }
 }

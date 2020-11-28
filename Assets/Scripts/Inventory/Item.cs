@@ -21,7 +21,7 @@ public class Item : MonoBehaviour
 
     public uint UID { get; private set; } = 0; // Unique ID
     public uint TID { get; private set; } = 0; // Type ID
-    public ItemType Type { get; private set; } = ItemType.None;
+    public ItemType Type;
 
     public void Start()
     {
