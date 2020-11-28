@@ -2,11 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemType
+{
+    None,
+    Key,
+    Coin
+}
+
 public class Item : MonoBehaviour
 {
-    public ItemData Data;
+    private static uint lastUID = 0;
+    private Dictionary<ItemType, uint> lastTID =
+    new Dictionary<ItemType, uint>{
+        {ItemType.None, 0},
+        {ItemType.Key, 0},
+        {ItemType.Coin, 0}
+    };
 
-    public ItemType Type => Data.Type;
-    public uint UID => Data.UID;
-    public uint TID => Data.TID;
+    public uint UID { get; private set; } = 0; // Unique ID
+    public uint TID { get; private set; } = 0; // Type ID
+    public ItemType Type { get; private set; } = ItemType.None;
+
+    public void Start()
+    {
+        UID = ++lastUID;
+        uint lastTypeId = lastTID[Type];
+        ++lastTypeId;
+        TID = lastTypeId;
+        lastTID[Type] = lastTypeId;
+    }
+
 }
