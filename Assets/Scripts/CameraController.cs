@@ -27,8 +27,6 @@ public class CameraController : MonoBehaviour
         _cameraOffset = transform.position - CenterObj.position;
         var dist = Vector3.Distance(_cameraOffset, CenterObj.position);
         _cameraOffsetRayon = dist;
-        maxPos = (CenterObj.position + new Vector3(0f, dist, 0f));
-        minPos = CenterObj.position;
     }
 
     // LateUpdate is called after Update methods
