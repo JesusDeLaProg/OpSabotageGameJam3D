@@ -21,8 +21,8 @@ public class CameraController : MonoBehaviour
 
     Vector2 _direction;
 
-    float x;
-    float y;
+    public float x;
+    public float y;
 
     // Use this for initialization
     void Start()

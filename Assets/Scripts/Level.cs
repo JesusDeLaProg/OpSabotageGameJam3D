@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    public static Level Instance;
+
     public event SceneTransitions.LevelSetupFinishedHandler LevelSetupFinished;
     public event SceneTransitions.LevelEndedHandler LevelEnded;
     public event SceneTransitions.LevelTransitionFinishedHandler LevelTransitionFinished;
@@ -14,6 +16,11 @@ public class Level : MonoBehaviour
     public virtual string VictoryHUD => null;
     public virtual string DefeatHUD => null;
     public virtual string NextLevelName => null;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     async void Start()
