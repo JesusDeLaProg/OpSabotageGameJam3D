@@ -31,5 +31,4 @@ public class Item : MonoBehaviour
         TID = lastTypeId;
         lastTID[Type] = lastTypeId;
     }
-
 }

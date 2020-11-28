@@ -17,47 +17,67 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
-    [SerializeField] private Item[] Items;
+    public List<InventoryAmount> StartAmountList;
+    private Dictionary<ItemType, int> Items;
 
     public event InventoryEvents.InventoryChangedHandler InventoryChanged;
 
     private void Awake()
     {
         Instance = this;
+        Items = new Dictionary<ItemType, int>();
+        foreach (var item in StartAmountList)
+        {
+            Items.Add(item.type, item.startAmount);
+        }
     }
 
     public bool Pickup(Item item)
     {
-        if (Items.Any(i => i.UID == item.UID)) return false; // Inventory already contains this item
+        item.GetComponent<AutoPickup>().Pickup();
+        return Pickup(item.Type);
+    }
 
-        Items = Items.Append(item).ToArray();
-        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, item.Type);
+    public bool Pickup(ItemType type)
+    {
+        Items[type] = Items[type] + 1;
+        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, type);
         return true;
+    }
+
+    public bool Drop(Item item)
+    {
+        item.GetComponent<AutoPickup>().Drop();
+        return Use(item);
     }
 
     public bool Use(Item item)
     {
-        if (!Items.Any(i => i.UID == item.UID)) return false; // Inventory does not contain this item
-
-        Items = Items.Where(i => i.UID != item.UID).ToArray();
-        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemUsed, item.Type);
-        return true;
+        return Use(item.Type);
     }
 
     public bool Use(ItemType type)
     {
-        var item = Items.FirstOrDefault(i => i.Type == type);
-        if (item.UID == 0) return false;
-        return Use(item);
+        if (Items[type] <= 0) return false; // Inventory does not contain this item
+        Items[type] = Items[type] - 1;
+        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemUsed, type);
+        return true;
     }
 
     public bool HasItemOfType(ItemType type)
     {
-        return Items.Any(i => i.Type == type);
+        return Items[type] > 0;
     }
 
     public int CountOfType(ItemType type)
     {
-        return Items.Where(i => i.Type == type).Count();
+        return Items[type];
     }
+}
+
+[System.Serializable]
+public struct InventoryAmount
+{
+    public ItemType type;
+    public int startAmount;
 }
