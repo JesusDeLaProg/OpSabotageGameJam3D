@@ -27,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     {
         Vector3 _forward = Camera.main.transform.forward;
         _forward.y = 0;
+        _forward = _forward.normalized;
         var move = _direction.y * _forward + _direction.x * Camera.main.transform.right;
 
         if (move != Vector3.zero)
