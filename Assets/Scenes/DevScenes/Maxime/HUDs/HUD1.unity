@@ -457,11 +457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6618927d3ebe9b4cafc1e933e34dd2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 2
   CoinsUI:
   - {fileID: 817334220}
   - {fileID: 1705826508}
   - {fileID: 743214441}
-  Type: 2
 --- !u!114 &488072007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,8 +1561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246b685a5aece21499a0370a91b04952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeysAmountText: {fileID: 817249716}
   Type: 1
+  KeysAmountText: {fileID: 817249716}
 --- !u!114 &1668292685
 MonoBehaviour:
   m_ObjectHideFlags: 0
