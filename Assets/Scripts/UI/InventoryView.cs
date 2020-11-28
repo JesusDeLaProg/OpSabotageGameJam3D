@@ -14,7 +14,7 @@ public abstract class InventoryView : MonoBehaviour
         UpdateView();
     }
 
-    private void OnAmountChanged(InventoryChangedEventType eventType, ItemData item)
+    private void OnAmountChanged(InventoryChangedEventType eventType, Item item)
     {
         if (item.Type == Type)
         {

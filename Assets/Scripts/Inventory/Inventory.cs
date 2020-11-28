@@ -10,14 +10,14 @@ public class InventoryEvents
         ItemPickedUp,
         ItemUsed
     }
-    public delegate void InventoryChangedHandler(InventoryChangedEventType eventType, ItemData item);
+    public delegate void InventoryChangedHandler(InventoryChangedEventType eventType, Item item);
 }
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
-    [SerializeField] private ItemData[] Items;
+    [SerializeField] private Item[] Items;
 
     public event InventoryEvents.InventoryChangedHandler InventoryChanged;
 
@@ -30,17 +30,17 @@ public class Inventory : MonoBehaviour
     {
         if (Items.Any(i => i.UID == item.UID)) return false; // Inventory already contains this item
 
-        Items = Items.Append(item.Data).ToArray();
-        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, item.Data);
+        Items = Items.Append(item).ToArray();
+        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, item);
         return true;
     }
 
-    public bool Use(ItemData Data)
+    public bool Use(Item item)
     {
-        if (!Items.Any(i => i.UID == Data.UID)) return false; // Inventory does not contain this item
+        if (!Items.Any(i => i.UID == item.UID)) return false; // Inventory does not contain this item
 
-        Items = Items.Where(i => i.UID != Data.UID).ToArray();
-        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemUsed, Data);
+        Items = Items.Where(i => i.UID != item.UID).ToArray();
+        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemUsed, item);
         return true;
     }
 

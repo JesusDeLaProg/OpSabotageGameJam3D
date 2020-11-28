@@ -9,7 +9,7 @@ public class KeyView : InventoryView
     public TextMeshProUGUI KeysAmountText;
 
     //Will be activated with inventory
-    private void OnKeyAmountChanged(InventoryChangedEventType eventType, ItemData item)
+    private void OnKeyAmountChanged(InventoryChangedEventType eventType, Item item)
     {
         if (Type != item.Type)
         {
