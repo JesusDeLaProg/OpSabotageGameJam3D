@@ -461,6 +461,7 @@ MonoBehaviour:
   - {fileID: 817334220}
   - {fileID: 1705826508}
   - {fileID: 743214441}
+  Type: 2
 --- !u!114 &488072007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,6 +1562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeysAmountText: {fileID: 817249716}
+  Type: 1
 --- !u!114 &1668292685
 MonoBehaviour:
   m_ObjectHideFlags: 0

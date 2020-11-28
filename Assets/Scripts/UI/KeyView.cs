@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static InventoryEvents;
 
-public class KeyView : MonoBehaviour
+public class KeyView : InventoryView
 {
     public TextMeshProUGUI KeysAmountText;
 
-    private void Start()
+    //Will be activated with inventory
+    private void OnKeyAmountChanged(InventoryChangedEventType eventType, ItemData item)
     {
-        // TODO: Get in inventory
-        int amount = 2;
-        KeysAmountText.text = $"x{amount}";
+        if (Type != item.Type)
+        {
+            return;
+        }
+        int keyAmount = Inventory.Instance.CountOfType(Type);
+        KeysAmountText.text = $"x{keyAmount}";
     }
 
-    //Will be activated with inventory
-    private void OnKeyAmountChanged()
+    protected override void UpdateView()
     {
-        int keyAmount = 2;
-        KeysAmountText.text = $"x{keyAmount}";
+        KeysAmountText.text = $"x{GetAmount()}";
     }
 }

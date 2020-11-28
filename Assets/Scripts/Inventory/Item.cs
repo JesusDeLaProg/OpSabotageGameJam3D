@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
     public ItemData Data;
 
-    public string Type => Data.Type;
+    public ItemType Type => Data.Type;
     public uint UID => Data.UID;
     public uint TID => Data.TID;
 }

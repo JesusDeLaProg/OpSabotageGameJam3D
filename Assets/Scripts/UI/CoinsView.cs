@@ -1,27 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static InventoryEvents;
 
-public class CoinsView : MonoBehaviour
+public class CoinsView : InventoryView
 {
-    private const int COIN_AMOUNT = 3;
-
     public GameObject[] CoinsUI;
 
     private void Start()
     {
-        for (int i = 0; i < COIN_AMOUNT; i++)
+        int coinAmount = Inventory.Instance.CountOfType(Type);
+        for (int i = 0; i < coinAmount; i++)
         {
             //Coins are active by default
             CoinsUI[i].SetActive(true);
         }
     }
 
-    //Will be activated with inventory
-    private void OnCoinAmountChanged()
+    protected override void UpdateView()
     {
-        int coinAmount = 2;
-        for (int i = 0; i < COIN_AMOUNT; i++)
+        int coinAmount = GetAmount();
+        for (int i = 0; i < coinAmount; i++)
         {
             CoinsUI[i].SetActive(i < coinAmount);
         }

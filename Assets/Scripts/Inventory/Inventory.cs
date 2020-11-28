@@ -15,9 +15,16 @@ public class InventoryEvents
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance;
+
     [SerializeField] private ItemData[] Items;
 
     public event InventoryEvents.InventoryChangedHandler InventoryChanged;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public bool Pickup(Item item)
     {
@@ -37,15 +44,20 @@ public class Inventory : MonoBehaviour
         return true;
     }
 
-    public bool Use(string type)
+    public bool Use(ItemType type)
     {
         var item = Items.FirstOrDefault(i => i.Type == type);
         if (item.UID == 0) return false;
         return Use(item);
     }
 
-    public bool HasItemOfType(string type)
+    public bool HasItemOfType(ItemType type)
     {
         return Items.Any(i => i.Type == type);
+    }
+
+    public int CountOfType(ItemType type)
+    {
+        return Items.Where(i => i.Type == type).Count();
     }
 }
