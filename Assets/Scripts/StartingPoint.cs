@@ -10,6 +10,10 @@ public class StartingPoint : MonoBehaviour
         {
             MessageView.Instance.SetMessage("Hey! Don’t forget to place all coins in the level. Otherwise the next adventurer will be unable to complete the puzzle");
         }
+        else if (Inventory.Instance.HasItemOfType(ItemType.Key))
+        {
+            MessageView.Instance.SetMessage("Hey! Don’t forget to place all the keys in the level. Otherwise the next adventurer will be unable to complete the puzzle");
+        }
         else
         {
             Level.Instance.EndLevel(true);

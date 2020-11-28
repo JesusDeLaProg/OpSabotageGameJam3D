@@ -34,9 +34,14 @@ public class Inventory : MonoBehaviour
 
     public bool Pickup(Item item)
     {
-        Items[item.Type] = Items[item.Type] + 1;
-        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, item.Type);
         item.GetComponent<AutoPickup>().Pickup();
+        return Pickup(item.Type);
+    }
+
+    public bool Pickup(ItemType type)
+    {
+        Items[type] = Items[type] + 1;
+        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, type);
         return true;
     }
 
