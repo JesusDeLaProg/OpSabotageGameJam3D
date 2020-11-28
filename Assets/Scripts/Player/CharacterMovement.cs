@@ -35,8 +35,12 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move), Time.fixedDeltaTime * _turnSpeed * move.magnitude);
             var speed = _speed;
 
-            _characterController.Move(move * speed * Time.fixedDeltaTime);
-
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(transform.position + move.normalized * 1f, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+            {
+                _characterController.Move(move * speed * Time.fixedDeltaTime);
+            }
         }
         else
         {
