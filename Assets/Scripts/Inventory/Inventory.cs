@@ -10,7 +10,7 @@ public class InventoryEvents
         ItemPickedUp,
         ItemUsed
     }
-    public delegate void InventoryChangedHandler(InventoryChangedEventType eventType, Item item);
+    public delegate void InventoryChangedHandler(InventoryChangedEventType eventType, ItemType type);
 }
 
 public class Inventory : MonoBehaviour
@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
         if (Items.Any(i => i.UID == item.UID)) return false; // Inventory already contains this item
 
         Items = Items.Append(item).ToArray();
-        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, item);
+        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemPickedUp, item.Type);
         return true;
     }
 
@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
         if (!Items.Any(i => i.UID == item.UID)) return false; // Inventory does not contain this item
 
         Items = Items.Where(i => i.UID != item.UID).ToArray();
-        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemUsed, item);
+        InventoryChanged?.Invoke(InventoryEvents.InventoryChangedEventType.ItemUsed, item.Type);
         return true;
     }
 
