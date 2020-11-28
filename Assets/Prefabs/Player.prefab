@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b0ee2207897f443bb9f9a3ea9e3dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
-  _turnSpeed: 5
+  _speed: 8
+  _turnSpeed: 10
 --- !u!114 &1277072242254357275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,18 @@ MonoBehaviour:
     m_ActionId: 4b1a00e8-355e-4315-b725-b7a7da33148c
     m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 018dfad8-59ce-4286-a76d-917fd1931b87
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7782788884249218914}
   - component: {fileID: 6606181230830911687}
   - component: {fileID: 8955735092510553101}
+  - component: {fileID: 2753030742949696538}
   m_Layer: 0
   m_Name: CloudCornerTop
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d92ef32394b5f474385d74b565a7bdd7, type: 2}
+  - {fileID: 670224309865224971, guid: da8932ea04b0a344180b6547b9ef8bf2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2753030742949696538
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442715076533474776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 90.50322, y: 90.4754, z: 78.740204}
+  m_Center: {x: 45.251617, y: -45.237694, z: 39.370102}

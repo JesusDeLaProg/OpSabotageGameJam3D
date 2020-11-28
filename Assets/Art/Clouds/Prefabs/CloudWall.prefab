@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4220668105420219228}
   - component: {fileID: 953928397940829433}
   - component: {fileID: 3087780060967163955}
+  - component: {fileID: 1552963891839439751}
   m_Layer: 0
   m_Name: CloudWall
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d92ef32394b5f474385d74b565a7bdd7, type: 2}
+  - {fileID: 670224309865224971, guid: da8932ea04b0a344180b6547b9ef8bf2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1552963891839439751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591906486610360806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 78.74016, y: 83.40471, z: 78.740166}
+  m_Center: {x: -39.37008, y: -41.702354, z: 39.370083}
