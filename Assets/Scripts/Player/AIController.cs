@@ -13,7 +13,9 @@ public class AIController : MonoBehaviour
     [SerializeField] private float _speed = 4;
     [SerializeField] private float _turnSpeed = 2f;
     CharacterController _characterController;
+    [SerializeField] BoxCollider DeadCollider;
 
+    public GameObject Particles;
     public Transform[] PathPoints = { };
     public bool Loop = false;
     public bool PathReverse = false;
@@ -61,14 +63,24 @@ public class AIController : MonoBehaviour
     public void Activate()
     {
         Anim.SetTrigger("WakeUp");
+<<<<<<< HEAD
         var awaiter = Task.Delay(1500).GetAwaiter();
+=======
+        var awaiter = Task.Delay(3000).GetAwaiter();
+>>>>>>> 319d0e4c716368647b8b2e407be2924c19f194ae
         awaiter.OnCompleted(() =>
         {
             _characterController = GetComponent<CharacterController>();
             pathPositions = (new Vector3[] { transform.position }).Concat(PathPoints.Select(t => t.position)).ToList();
             currentTargetIndex = 1;
             currentTarget = pathPositions[1];
+<<<<<<< HEAD
             IsActiveSingle = true;
+=======
+            DeadCollider.enabled = false;
+            IsActiveSingle = true;
+            Particles.SetActive(true);
+>>>>>>> 319d0e4c716368647b8b2e407be2924c19f194ae
         });
     }
 
