@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18337148, g: 0.22722, b: 0.2958738, a: 1}
+  m_IndirectSpecularColor: {r: 0.18337175, g: 0.22722031, b: 0.29587427, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2331,11 +2331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef67418b8b0ade943acf5345f6f94d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartAmountList:
-  - type: 1
-    startAmount: 1
-  - type: 2
-    startAmount: 3
+  StartAmountList: []
 --- !u!1001 &230200427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11984,6 +11980,8 @@ MonoBehaviour:
   LookAtPlayer: 0
   RotateAroundPlayer: 1
   RotationsSpeed: 2.5
+  x: 265.1477
+  y: 3.528989
 --- !u!114 &695282681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25207,6 +25205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251066618966885596, guid: 15177798c8bb53f4d92fc7949220e4be,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15177798c8bb53f4d92fc7949220e4be, type: 3}

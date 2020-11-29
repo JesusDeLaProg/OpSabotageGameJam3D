@@ -11,11 +11,13 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float _speed = 4;
     [SerializeField] private float _turnSpeed = 5f;
     CharacterController _characterController;
+    Animator _animator;
 
     // Start is called before the first frame update
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,9 @@ public class CharacterMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move), Time.fixedDeltaTime * _turnSpeed * move.magnitude);
             var speed = _speed;
+            _animator.SetFloat("Speed", 0.2f);
+            _animator.speed = _direction.magnitude * 2f;
+
 
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
@@ -48,6 +53,8 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             //Reset Velocity?
+            _animator.SetFloat("Speed", 0);
+            _animator.speed = 1;
             
         }
    
