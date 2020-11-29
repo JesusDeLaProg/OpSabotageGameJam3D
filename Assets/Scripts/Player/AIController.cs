@@ -14,6 +14,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float _turnSpeed = 2f;
     CharacterController _characterController;
 
+    public GameObject Particles;
     public Transform[] PathPoints = { };
     public bool Loop = false;
     public bool PathReverse = false;
@@ -68,6 +69,7 @@ public class AIController : MonoBehaviour
             currentTargetIndex = 1;
             currentTarget = pathPositions[1];
             Active = true;
+            Particles.SetActive(true);
         });
     }
 
