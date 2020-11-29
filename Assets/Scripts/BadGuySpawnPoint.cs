@@ -17,11 +17,14 @@ public class BadGuySpawnPoint : MonoBehaviour, IInteractble
 
     public void OnInteract()
     {
-        var awaiter = Task.Delay(1000).GetAwaiter();
+        CharacterMovement._respawnBadGuy?.Invoke();
+        CharacterMovement.Active = false;
+        var awaiter = Task.Delay(1500).GetAwaiter();
         awaiter.OnCompleted(() =>
         {
             gameObject.SetActive(false);
             BadGuy.SetActive(true);
+            CharacterMovement.Active = true;
         });
     }
 }
