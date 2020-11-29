@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public GameObject Collider;
+    public Collider Collider;
     public bool isOpen;
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +27,7 @@ public class Door : MonoBehaviour
             GameState.CurrentInventory.Use(ItemType.Key);
         }
         isOpen = !isOpen;
-        Collider.SetActive(!isOpen);
+        Collider.enabled = !isOpen;
     }
 
     private void OnTriggerExit(Collider other)

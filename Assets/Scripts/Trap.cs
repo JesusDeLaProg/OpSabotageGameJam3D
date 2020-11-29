@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public GameObject Collider;
+    public Collider Collider;
 
     public void Activate(bool isActive)
     {
-        Collider.SetActive(isActive);
+        Collider.enabled = isActive;
     }
 }
