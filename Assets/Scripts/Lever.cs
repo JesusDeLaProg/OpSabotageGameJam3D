@@ -18,12 +18,12 @@ public class Lever : MonoBehaviour, IInteractble
 
     public void OnEnterRange()
     {
-        Debug.Log("Entering Interaction Range");
+            GameState.CurrentInteractionView.Active("Activate!");
     }
 
     public void OnExitRange()
     {
-        Debug.Log("Exiting Interaction Range");
+            GameState.CurrentInteractionView.Active("");
     }
 
     public void OnInteract()

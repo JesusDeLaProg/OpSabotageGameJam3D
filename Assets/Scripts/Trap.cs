@@ -9,7 +9,7 @@ public class Trap : MonoBehaviour
 
     public void Activate(bool isActive)
     {
-        Anim.SetBool("isOpen", isActive);
+        Anim.SetBool("isOpen", !isActive);
         Collider.enabled = isActive;
     }
 }
