@@ -29,6 +29,7 @@ public class CharacterMovement : MonoBehaviour
     {
         _levelEnded -= OnLevelEnded;
         _respawnBadGuy -= OnRespawnBadGuy;
+        _victory -= OnVictory;
     }
 
     // Update is called once per frame
@@ -103,6 +104,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnVictory()
     {
+        _animator.speed = 1;
         _animator.SetTrigger("Victory");
     }
 

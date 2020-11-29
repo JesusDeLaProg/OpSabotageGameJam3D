@@ -56,7 +56,6 @@ public class Level : MonoBehaviour
         AIController.Active = false;
         CharacterMovement.Active = false;
         LevelEnded?.Invoke(this, victory);
-        CharacterMovement._levelEnded?.Invoke();
         await PlayEndLevelTransition(victory);
         LevelTransitionFinished?.Invoke(this);
       
@@ -74,6 +73,7 @@ public class Level : MonoBehaviour
         else if (victory == false)
         {
             CameraController.Instance.CenterOnPlayer();
+            CharacterMovement._levelEnded?.Invoke();
             await Task.Delay(5000);
         }
         
