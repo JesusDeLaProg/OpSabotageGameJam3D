@@ -15,7 +15,7 @@ public class BadGuySpawnPoint : MonoBehaviour, IInteractble
     {
         if (!BadGuy.IsActiveSingle)
         {
-            InteractionView.Instance.Active("Revive!");
+            GameState.CurrentInteractionView.Active("Revive!");
         }
     }
 
@@ -23,7 +23,7 @@ public class BadGuySpawnPoint : MonoBehaviour, IInteractble
     {
         if (!BadGuy.IsActiveSingle)
         {
-            InteractionView.Instance.Active("");
+            GameState.CurrentInteractionView.Active("");
         }
     }
 
@@ -35,6 +35,7 @@ public class BadGuySpawnPoint : MonoBehaviour, IInteractble
         CharacterMovement.Active = false;
         var awaiter = Task.Delay(1500).GetAwaiter();
         awaiter.OnCompleted(() => CharacterMovement.Active = true);
-        InteractionView.Instance.Active("");
+        GameState.CurrentInventory.WakeupBaddy();
+        GameState.CurrentInteractionView.Active("");
     }
 }

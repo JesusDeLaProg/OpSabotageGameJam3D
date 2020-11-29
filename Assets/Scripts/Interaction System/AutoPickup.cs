@@ -34,11 +34,11 @@ public class AutoPickup : MonoBehaviour, IInteractble
     {
         if (isThere)
         {
-            Inventory.Instance.Pickup(GetComponent<Item>());
+            GameState.CurrentInventory.Pickup(GetComponent<Item>());
         }
         else
         {
-            Inventory.Instance.Drop(GetComponent<Item>());
+            GameState.CurrentInventory.Drop(GetComponent<Item>());
         }
         //Destroy(gameObject);
     }

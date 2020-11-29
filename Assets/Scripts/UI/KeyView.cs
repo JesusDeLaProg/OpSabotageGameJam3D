@@ -15,7 +15,7 @@ public class KeyView : InventoryView
         {
             return;
         }
-        int keyAmount = Inventory.Instance.CountOfType(Type);
+        int keyAmount = GameState.CurrentInventory.CountOfType(Type);
         KeysAmountText.text = $"x{keyAmount}";
     }
 

@@ -15,21 +15,25 @@ public class InventoryEvents
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory Instance;
-
     public List<InventoryAmount> StartAmountList;
-    private Dictionary<ItemType, int> Items;
+    public Dictionary<ItemType, int> Items;
+    public int BaddiesToWakeup;
 
     public event InventoryEvents.InventoryChangedHandler InventoryChanged;
 
     private void Awake()
     {
-        Instance = this;
+        GameState.CurrentInventory = this;
         Items = new Dictionary<ItemType, int>();
         foreach (var item in StartAmountList)
         {
             Items.Add(item.type, item.startAmount);
         }
+    }
+
+    public void WakeupBaddy()
+    {
+        BaddiesToWakeup = Mathf.Max(0, BaddiesToWakeup - 1);
     }
 
     public bool Pickup(Item item)
