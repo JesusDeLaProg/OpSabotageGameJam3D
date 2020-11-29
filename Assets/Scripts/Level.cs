@@ -18,7 +18,19 @@ public class Level : MonoBehaviour
     public virtual string DefeatHUD => null;
     public virtual string NextLevelName => null;
 
-    public virtual bool WinConditionMet => false;
+    public virtual bool WinConditionMet
+    {
+        get
+        {
+            if (GameState.CurrentInventory)
+            {
+                return GameState.CurrentInventory.Items[ItemType.Coin] == 0 &&
+                    GameState.CurrentInventory.Items[ItemType.Key] == 0 &&
+                    GameState.CurrentInventory.BaddiesToWakeup == 0;
+            }
+            return false;
+        }
+    }
 
     private void Awake()
     {
@@ -36,7 +48,7 @@ public class Level : MonoBehaviour
 
     public async virtual Task Setup()
     {
-        // Level Setup (Startup animations)
+        
     }
 
     public async void EndLevel(bool? victory)
