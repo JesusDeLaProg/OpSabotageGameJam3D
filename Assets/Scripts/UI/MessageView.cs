@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class MessageView : MonoBehaviour
 {
-    public static MessageView Instance;
-
     public TextMeshProUGUI MessageText;
 
     private void Awake()
     {
-        Instance = this;
+        GameState.CurrentMessageView = this;
         gameObject.SetActive(false);
     }
 

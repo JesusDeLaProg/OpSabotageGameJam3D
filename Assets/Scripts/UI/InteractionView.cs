@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class InteractionView : MonoBehaviour
 {
-    public static InteractionView Instance;
-
     public TextMeshProUGUI Message;
 
     public CanvasGroup Opacity;
@@ -14,7 +12,7 @@ public class InteractionView : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        GameState.CurrentInteractionView = this;
         Opacity.alpha = 0;
         cam = Camera.main.transform;
     }
