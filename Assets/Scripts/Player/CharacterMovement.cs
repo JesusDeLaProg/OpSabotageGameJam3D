@@ -39,16 +39,19 @@ public class CharacterMovement : MonoBehaviour
         _forward = _forward.normalized;
         var move = _direction.y * _forward + _direction.x * Camera.main.transform.right;
 
+        if (!_characterController.isGrounded)
+        {
+            _animator.SetBool("isFalling", true);
+            return;
+        }
+        else
+        {
+            _animator.SetBool("isFalling", false);
+        }
+
         if (move != Vector3.zero)
         {
-            if (!_characterController.isGrounded)
-            {
-                _animator.SetBool("isFalling", true);
-
-            } else
-            {
-                _animator.SetBool("isFalling", false);
-            }
+            
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move), Time.fixedDeltaTime * _turnSpeed * move.magnitude);
             var speed = _speed;
             _animator.SetFloat("Speed", 0.2f);
