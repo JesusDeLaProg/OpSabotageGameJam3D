@@ -63,13 +63,17 @@ public class AIController : MonoBehaviour
     public void Activate()
     {
         Anim.SetTrigger("WakeUp");
-        var awaiter = Task.Delay(3000).GetAwaiter();
+        var awaiter = Task.Delay(2000).GetAwaiter();
         awaiter.OnCompleted(() =>
         {
             _characterController = GetComponent<CharacterController>();
             pathPositions = (new Vector3[] { transform.position }).Concat(PathPoints.Select(t => t.position)).ToList();
             currentTargetIndex = 1;
-            currentTarget = pathPositions[1];
+            if (pathPositions.Count > 1)
+            {
+                currentTarget = pathPositions[1];
+            }
+            
             DeadCollider.enabled = false;
             IsActiveSingle = true;
             Particles.SetActive(true);
@@ -99,7 +103,10 @@ public class AIController : MonoBehaviour
     {
         if (!Active || !IsActiveSingle) return;
 
-        if (hit.gameObject.CompareTag("Player")) Level.Instance.EndLevel(false);
+        if (hit.gameObject.CompareTag("Player"))
+        {
+            Level.Instance.EndLevel(false);
+        }
     }
 
     private void UpdatePlayerMovement()

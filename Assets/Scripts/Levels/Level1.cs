@@ -14,8 +14,4 @@ public class Level1 : Level
         
     }
 
-    public async override Task PlayEndLevelTransition(bool? victory)
-    {
-
-    }
 }
