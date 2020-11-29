@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+
+public class BadGuySpawnPoint : MonoBehaviour, IInteractble
+{
+    public AIController BadGuy;
+
+    public float interactionRange => 2f;
+
+    public bool isAutoPickup => false;
+
+    public void OnEnterRange() 
+    {
+        InteractionView.Instance.Active("Revive!");
+    }
+
+    public void OnExitRange()
+    {
+        InteractionView.Instance.Active("");
+    }
+
+    public void OnInteract()
+    {
+<<<<<<< HEAD
+        CharacterMovement._respawnBadGuy?.Invoke();
+        CharacterMovement.Active = false;
+        var awaiter = Task.Delay(1500).GetAwaiter();
+        awaiter.OnCompleted(() =>
+        {
+            gameObject.SetActive(false);
+            BadGuy.SetActive(true);
+            CharacterMovement.Active = true;
+        });
+=======
+      //  gameObject.SetActive(false);
+        BadGuy.Activate();
+        
+>>>>>>> main
+    }
+}

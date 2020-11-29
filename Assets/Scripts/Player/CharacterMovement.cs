@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
 
     public static bool Active = false;
-
+    public static Action _levelEnded;
+    public static Action _respawnBadGuy;
     private Vector2 _direction;
 
     [SerializeField] private float _speed = 4;
@@ -18,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
+        _levelEnded += OnLevelEnded;
+        _respawnBadGuy += OnRespawnBadGuy;
     }
 
     // Update is called once per frame
@@ -27,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
         UpdatePlayerMovement();
         ApplyGravity();
     }
-    
+
     private void UpdatePlayerMovement()
     {
         Vector3 _forward = Camera.main.transform.forward;
@@ -37,6 +41,14 @@ public class CharacterMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
+            if (!_characterController.isGrounded)
+            {
+                _animator.SetBool("isFalling", true);
+
+            } else
+            {
+                _animator.SetBool("isFalling", false);
+            }
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move), Time.fixedDeltaTime * _turnSpeed * move.magnitude);
             var speed = _speed;
             _animator.SetFloat("Speed", 0.2f);
@@ -55,9 +67,9 @@ public class CharacterMovement : MonoBehaviour
             //Reset Velocity?
             _animator.SetFloat("Speed", 0);
             _animator.speed = 1;
-            
+
         }
-   
+
     }
     private void ApplyGravity()
     {
@@ -67,5 +79,21 @@ public class CharacterMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         _direction = context.ReadValue<Vector2>();
+    }
+
+    private void PlayerDeath()
+    {
+        _animator.SetBool("isDead", true);
+    }
+
+    private void OnRespawnBadGuy()
+    {
+        _animator.SetTrigger("Respawn");
+    }
+
+    private void OnLevelEnded()
+    {
+        PlayerDeath();
+        _animator.speed = 1;
     }
 }
