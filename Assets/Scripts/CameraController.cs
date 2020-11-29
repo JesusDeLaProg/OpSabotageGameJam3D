@@ -30,6 +30,12 @@ public class CameraController : MonoBehaviour
         _cameraOffset = transform.position - CenterObj.position;
         var dist = Vector3.Distance(_cameraOffset, CenterObj.position);
         _cameraOffsetRayon = dist;
+        var vec = Vector3.forward;//CenterObj.transform.forward;
+        var quat = Quaternion.Euler(-y, x, 0);
+        vec = quat * vec;
+        var newPos = CenterObj.transform.position + vec * _cameraOffsetRayon;
+        transform.position = newPos;
+        transform.LookAt(CenterObj.transform);
     }
 
     public void OnMove(InputAction.CallbackContext context)
