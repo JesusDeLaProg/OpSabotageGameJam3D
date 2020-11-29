@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour
     private List<Vector3> pathPositions;
     private int currentTargetIndex = 0;
     private Vector3 currentTarget;
+    public bool IsActiveSingle;
 
     public Animator Anim;
 
@@ -61,14 +62,14 @@ public class AIController : MonoBehaviour
     public void Activate()
     {
         Anim.SetTrigger("WakeUp");
-        var awaiter = Task.Delay(1000).GetAwaiter();
+        var awaiter = Task.Delay(1500).GetAwaiter();
         awaiter.OnCompleted(() =>
         {
             _characterController = GetComponent<CharacterController>();
             pathPositions = (new Vector3[] { transform.position }).Concat(PathPoints.Select(t => t.position)).ToList();
             currentTargetIndex = 1;
             currentTarget = pathPositions[1];
-            Active = true;
+            IsActiveSingle = true;
             Particles.SetActive(true);
         });
     }
@@ -76,7 +77,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!Active) return;
+        if (!Active || !IsActiveSingle) return;
 
         Vector2 currentPos = new Vector2(transform.position.x, transform.position.z);
         Vector2 target = new Vector2(currentTarget.x, currentTarget.z);
@@ -94,14 +95,14 @@ public class AIController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (!Active) return;
+        if (!Active || !IsActiveSingle) return;
 
         if (hit.gameObject.CompareTag("Player")) Level.Instance.EndLevel(false);
     }
 
     private void UpdatePlayerMovement()
     {
-        if (!Active) return;
+        if (!Active || !IsActiveSingle) return;
 
         Vector3 move = new Vector3(_direction.x, 0, _direction.y);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move, Vector3.up), Time.deltaTime * _turnSpeed);
@@ -118,7 +119,7 @@ public class AIController : MonoBehaviour
 
     private void MoveToNextTarget()
     {
-        if (!Active) return;
+        if (!Active || !IsActiveSingle) return;
 
         if (Loop)
         {
