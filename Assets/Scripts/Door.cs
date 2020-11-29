@@ -5,6 +5,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Collider Collider;
+    public Animator Anim;
+    public Animator Anim2;
     public bool isOpen;
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +28,16 @@ public class Door : MonoBehaviour
             }
             GameState.CurrentInventory.Use(ItemType.Key);
         }
+        Debug.Log("isOpen: "+isOpen);
         isOpen = !isOpen;
+        StartCoroutine(WaitAndEnable(isOpen));
+        Anim.SetBool("isOpen", !isOpen);
+        Anim2.SetBool("isOpen", !isOpen);
+    }
+
+    private IEnumerator WaitAndEnable(bool isOpen)
+    {
+        yield return new WaitForSeconds(1f);
         Collider.enabled = !isOpen;
     }
 
