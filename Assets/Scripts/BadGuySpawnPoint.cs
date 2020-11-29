@@ -11,9 +11,15 @@ public class BadGuySpawnPoint : MonoBehaviour, IInteractble
 
     public bool isAutoPickup => false;
 
-    public void OnEnterRange() {}
+    public void OnEnterRange() 
+    {
+        InteractionView.Instance.Active("Revive!");
+    }
 
-    public void OnExitRange() {}
+    public void OnExitRange()
+    {
+        InteractionView.Instance.Active("");
+    }
 
     public void OnInteract()
     {

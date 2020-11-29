@@ -60,7 +60,7 @@ public class AIController : MonoBehaviour
     public void Activate()
     {
         Anim.SetTrigger("WakeUp");
-        var awaiter = Task.Delay(1000).GetAwaiter();
+        var awaiter = Task.Delay(1500).GetAwaiter();
         awaiter.OnCompleted(() =>
         {
             _characterController = GetComponent<CharacterController>();
