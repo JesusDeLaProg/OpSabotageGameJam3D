@@ -7,6 +7,7 @@ public class CharacterMovement : MonoBehaviour
 
     public static bool Active = false;
     public static Action _levelEnded;
+    public static Action _respawnBadGuy;
     private Vector2 _direction;
 
     [SerializeField] private float _speed = 4;
@@ -20,6 +21,7 @@ public class CharacterMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
         _levelEnded += OnLevelEnded;
+        _respawnBadGuy += OnRespawnBadGuy;
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
         UpdatePlayerMovement();
         ApplyGravity();
     }
-    
+
     private void UpdatePlayerMovement()
     {
         Vector3 _forward = Camera.main.transform.forward;
@@ -41,9 +43,9 @@ public class CharacterMovement : MonoBehaviour
         {
             if (!_characterController.isGrounded)
             {
-                _animator.SetBool("isFalling",true);
-                
-            }else
+                _animator.SetBool("isFalling", true);
+
+            } else
             {
                 _animator.SetBool("isFalling", false);
             }
@@ -65,9 +67,9 @@ public class CharacterMovement : MonoBehaviour
             //Reset Velocity?
             _animator.SetFloat("Speed", 0);
             _animator.speed = 1;
-            
+
         }
-   
+
     }
     private void ApplyGravity()
     {
@@ -81,7 +83,12 @@ public class CharacterMovement : MonoBehaviour
 
     private void PlayerDeath()
     {
-        _animator.SetBool("isDead",true);
+        _animator.SetBool("isDead", true);
+    }
+
+    private void OnRespawnBadGuy()
+    {
+        _animator.SetTrigger("Respawn");
     }
 
     private void OnLevelEnded()
