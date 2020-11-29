@@ -21,8 +21,8 @@ public class CameraController : MonoBehaviour
 
     Vector2 _direction;
 
-    float x;
-    float y;
+    public float x;
+    public float y;
 
     // Use this for initialization
     void Start()
@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
         x += _direction.x * RotationsSpeed;
         y += _direction.y * RotationsSpeed;
         y = Mathf.Clamp(y, 0, 85f);
-        var vec = CenterObj.transform.forward;
+        var vec = Vector3.forward;//CenterObj.transform.forward;
         var quat = Quaternion.Euler(-y, x, 0);
         vec = quat * vec;
         var newPos = CenterObj.transform.position + vec * _cameraOffsetRayon;

@@ -95,6 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94712c8885d8c5e4481cdc3e644fb2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Transparant: {fileID: 2100000, guid: 1f9779a4cdfa466458ea3ab71a1d7fa7, type: 2}
+  Normal: {fileID: 2100000, guid: ec42b9b965dd0ba43a69bdbbede2d417, type: 2}
+  isThere: 0
 --- !u!54 &6486086737005483503
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,9 +135,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6486086737005483473}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.6637993
-  m_Height: 2.7495408
+  m_Height: 3.8397841
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8747704, z: -0.16379929}
+  m_Center: {x: 0, y: -0.12, z: -0.16379929}
