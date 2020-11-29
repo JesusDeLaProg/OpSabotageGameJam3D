@@ -4907,7 +4907,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.8
+  m_Radius: 0.7
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: -0.1, z: 0}
@@ -4923,7 +4923,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.75
-  m_Radius: 0.8
+  m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -4947,6 +4947,7 @@ MonoBehaviour:
   PathPoints: []
   Loop: 0
   PathReverse: 0
+  IsActiveSingle: 0
   Anim: {fileID: 2622885220060470384}
 --- !u!114 &-1671298244416779886
 MonoBehaviour:
