@@ -11,7 +11,27 @@ public class Level1 : Level
 
     public async override Task Setup()
     {
-        
+        GameState.CurrentInventory.Items = new Dictionary<ItemType, int>
+        {
+            { ItemType.Key, 0 },
+            { ItemType.Coin, 3 }
+        };
+        GameState.CurrentInventory.BaddiesToWakeup = 1;
+    }
+
+
+    public override bool WinConditionMet
+    {
+        get
+        {
+            if(GameState.CurrentInventory)
+            {
+                return GameState.CurrentInventory.Items[ItemType.Coin] == 0 &&
+                    GameState.CurrentInventory.Items[ItemType.Key] == 0 &&
+                    GameState.CurrentInventory.BaddiesToWakeup == 0;
+            }
+            return false;
+        }
     }
 
 }

@@ -15,16 +15,16 @@ public class Door : MonoBehaviour
         }
         if (isOpen)
         {
-            Inventory.Instance.Pickup(ItemType.Key);
+            GameState.CurrentInventory.Pickup(ItemType.Key);
         }
         else
         {
-            if (!Inventory.Instance.HasItemOfType(ItemType.Key))
+            if (!GameState.CurrentInventory.HasItemOfType(ItemType.Key))
             {
-                MessageView.Instance.SetMessage("The door is locked! Go get a key if you want to get through it.");
+                GameState.CurrentMessageView.SetMessage("The door is locked! Go get a key if you want to get through it.");
                 return;
             }
-            Inventory.Instance.Use(ItemType.Key);
+            GameState.CurrentInventory.Use(ItemType.Key);
         }
         isOpen = !isOpen;
         Collider.SetActive(!isOpen);
@@ -36,6 +36,6 @@ public class Door : MonoBehaviour
         {
             return;
         }
-        MessageView.Instance.SetMessage("");
+        GameState.CurrentMessageView.SetMessage("");
     }
 }

@@ -15,8 +15,9 @@ public class AIController : MonoBehaviour
     CharacterController _characterController;
     [SerializeField] BoxCollider DeadCollider;
 
-    public GameObject Particles;
-    public Transform[] PathPoints = { };
+    public GameObject GooParticles;
+    public GameObject SleepyParticles;
+    public Transform[] PathPoints;
     public bool Loop = false;
     public bool PathReverse = false;
 
@@ -76,7 +77,8 @@ public class AIController : MonoBehaviour
             
             DeadCollider.enabled = false;
             IsActiveSingle = true;
-            Particles.SetActive(true);
+            SleepyParticles.SetActive(false);
+            GooParticles.SetActive(true);
         });
     }
 

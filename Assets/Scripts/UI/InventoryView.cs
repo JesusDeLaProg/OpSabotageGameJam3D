@@ -10,7 +10,7 @@ public abstract class InventoryView : MonoBehaviour
     private void Start()
     {
         // TODO: Get in inventory
-        Inventory.Instance.InventoryChanged += OnAmountChanged;
+        GameState.CurrentInventory.InventoryChanged += OnAmountChanged;
         UpdateView();
     }
 
@@ -26,6 +26,6 @@ public abstract class InventoryView : MonoBehaviour
 
     protected int GetAmount()
     {
-        return Inventory.Instance.CountOfType(Type);
+        return GameState.CurrentInventory.CountOfType(Type);
     }
 }

@@ -13,13 +13,12 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float _speed = 4;
     [SerializeField] private float _turnSpeed = 5f;
     CharacterController _characterController;
-    Animator _animator;
+    public Animator _animator;
 
     // Start is called before the first frame update
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
-        _animator = GetComponentInChildren<Animator>();
         _levelEnded += OnLevelEnded;
         _respawnBadGuy += OnRespawnBadGuy;
     }

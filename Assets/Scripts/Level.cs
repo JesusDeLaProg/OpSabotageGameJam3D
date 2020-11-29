@@ -18,6 +18,8 @@ public class Level : MonoBehaviour
     public virtual string DefeatHUD => null;
     public virtual string NextLevelName => null;
 
+    public virtual bool WinConditionMet => false;
+
     private void Awake()
     {
         Instance = this;
