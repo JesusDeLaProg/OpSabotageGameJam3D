@@ -13870,9 +13870,9 @@ Transform:
   - {fileID: 831038782}
   - {fileID: 1609668040}
   - {fileID: 581145614}
-  - {fileID: 1473969377}
   - {fileID: 420666875}
   - {fileID: 1684112273}
+  - {fileID: 1473969377}
   - {fileID: 242023206}
   - {fileID: 1205203238}
   m_Father: {fileID: 0}
@@ -24890,16 +24890,6 @@ PrefabInstance:
     - target: {fileID: 1277072242254357276, guid: 15177798c8bb53f4d92fc7949220e4be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3712495295268944833, guid: 15177798c8bb53f4d92fc7949220e4be,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720338233096234252, guid: 15177798c8bb53f4d92fc7949220e4be,
-        type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

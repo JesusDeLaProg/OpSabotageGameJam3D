@@ -28,7 +28,7 @@ public class Level : MonoBehaviour
     {
         await Setup();
         LevelSetupFinished?.Invoke(this);
-        AIController.Active = false;
+        AIController.Active = true;
         CharacterMovement.Active = true;
     }
 
