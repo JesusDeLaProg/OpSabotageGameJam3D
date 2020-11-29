@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DevScenes/Maxime/Level2.unity
     guid: 64df37b78162fdd498186d383ecdc2c1
   - enabled: 1
+    path: Assets/Scenes/DevScenes/Maxime/Level3.unity
+    guid: be11295b787636b409ae41280824cb26
+  - enabled: 1
     path: Assets/Scenes/DevScenes/Maxime/HUDs/HUD1.unity
     guid: ba2dd06dad10e3d4f9d84fd27535e632
   - enabled: 1
