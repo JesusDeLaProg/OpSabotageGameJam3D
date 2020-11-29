@@ -105,10 +105,14 @@ public class AIController : MonoBehaviour
     {
         if (!Active || !IsActiveSingle) return;
 
+<<<<<<< HEAD
         if (hit.gameObject.CompareTag("Player"))
         {
             Level.Instance.EndLevel(false);
         }
+=======
+        if (hit.gameObject.CompareTag("Player")) GameState.CurrentLevel.EndLevel(false);
+>>>>>>> 566860a766602115cdb44ee038f7821b11212e08
     }
 
     private void UpdatePlayerMovement()
