@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
     {
         _cameraOffset = transform.position - CenterObj.position;
         var dist = Vector3.Distance(_cameraOffset, CenterObj.position);
-        _cameraOffsetRayon = 100;// dist;
+        _cameraOffsetRayon = 20;// dist;
         var vec = Vector3.forward;//CenterObj.transform.forward;
         var quat = Quaternion.Euler(-y, x, 0);
         vec = quat * vec;
@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour
             {
                 GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize -= 0.1f;
             }
-            var pos = (Quaternion.Euler(-10f, 0f, 0f) * CenterObj.forward * 100) + CenterObj.transform.position;
+            var pos = (Quaternion.Euler(-10f, 0f, 0f) * CenterObj.forward * 20) + CenterObj.transform.position;
             transform.position = Vector3.Slerp(transform.position, pos, SmoothFactor * 0.5f);
             transform.LookAt(CenterObj.transform);
         }
