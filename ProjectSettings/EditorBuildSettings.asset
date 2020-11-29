@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DevScenes/Maxime/LevelTest.unity
     guid: ad7497175daaf1344970423e4cf7bf05
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/Maxime/End.unity
+    guid: 6853641421214dd4b801c3baebeca503
   m_configObjects: {}

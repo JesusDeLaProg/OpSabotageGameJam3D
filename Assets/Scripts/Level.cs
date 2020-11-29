@@ -44,13 +44,25 @@ public class Level : MonoBehaviour
         AIController.Active = false;
         CharacterMovement.Active = false;
         LevelEnded?.Invoke(this, victory);
+        CharacterMovement._levelEnded?.Invoke();
         await PlayEndLevelTransition(victory);
         LevelTransitionFinished?.Invoke(this);
-        CharacterMovement._levelEnded?.Invoke();
+      
     }
 
     public async virtual Task PlayEndLevelTransition(bool? victory)
     {
         // Victory/Defeat animations
+        if (victory == true)
+        {
+            CameraController.Instance.CenterOnPlayer();
+            await Task.Delay(5000);
+        }
+        else if (victory == false)
+        {
+            CameraController.Instance.CenterOnPlayer();
+            await Task.Delay(5000);
+        }
+        
     }
 }
