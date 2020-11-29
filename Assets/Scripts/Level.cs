@@ -68,6 +68,7 @@ public class Level : MonoBehaviour
         if (victory == true)
         {
             CameraController.Instance.CenterOnPlayer();
+            CharacterMovement._victory?.Invoke();
             await Task.Delay(5000);
         }
         else if (victory == false)
