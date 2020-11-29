@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class AIController : MonoBehaviour
@@ -20,6 +21,8 @@ public class AIController : MonoBehaviour
     private List<Vector3> pathPositions;
     private int currentTargetIndex = 0;
     private Vector3 currentTarget;
+
+    public Animator Anim;
 
     public void OnDrawGizmos()
     {
@@ -52,13 +55,20 @@ public class AIController : MonoBehaviour
         
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+
+    public void Activate()
     {
-        _characterController = GetComponent<CharacterController>();
-        pathPositions = (new Vector3[] { transform.position }).Concat(PathPoints.Select(t => t.position)).ToList();
-        currentTargetIndex = 1;
-        currentTarget = pathPositions[1];
+        Anim.SetTrigger("WakeUp");
+        var awaiter = Task.Delay(1000).GetAwaiter();
+        awaiter.OnCompleted(() =>
+        {
+            _characterController = GetComponent<CharacterController>();
+            pathPositions = (new Vector3[] { transform.position }).Concat(PathPoints.Select(t => t.position)).ToList();
+            currentTargetIndex = 1;
+            currentTarget = pathPositions[1];
+            Active = true;
+        });
     }
 
     // Update is called once per frame
@@ -82,11 +92,15 @@ public class AIController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (!Active) return;
+
         if (hit.gameObject.CompareTag("Player")) Level.Instance.EndLevel(false);
     }
 
     private void UpdatePlayerMovement()
     {
+        if (!Active) return;
+
         Vector3 move = new Vector3(_direction.x, 0, _direction.y);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(move, Vector3.up), Time.deltaTime * _turnSpeed);
         var speed = _speed;
@@ -102,7 +116,9 @@ public class AIController : MonoBehaviour
 
     private void MoveToNextTarget()
     {
-        if(Loop)
+        if (!Active) return;
+
+        if (Loop)
         {
             currentTargetIndex = (currentTargetIndex + 1) % pathPositions.Count;
         }
