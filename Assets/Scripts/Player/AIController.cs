@@ -15,8 +15,9 @@ public class AIController : MonoBehaviour
     CharacterController _characterController;
     [SerializeField] BoxCollider DeadCollider;
 
-    public GameObject Particles;
-    public Transform[] PathPoints = { };
+    public GameObject GooParticles;
+    public GameObject SleepyParticles;
+    public Transform[] PathPoints;
     public bool Loop = false;
     public bool PathReverse = false;
 
@@ -72,7 +73,8 @@ public class AIController : MonoBehaviour
             currentTarget = pathPositions[1];
             DeadCollider.enabled = false;
             IsActiveSingle = true;
-            Particles.SetActive(true);
+            SleepyParticles.SetActive(false);
+            GooParticles.SetActive(true);
         });
     }
 
@@ -99,7 +101,7 @@ public class AIController : MonoBehaviour
     {
         if (!Active || !IsActiveSingle) return;
 
-        if (hit.gameObject.CompareTag("Player")) Level.Instance.EndLevel(false);
+        if (hit.gameObject.CompareTag("Player")) GameState.CurrentLevel.EndLevel(false);
     }
 
     private void UpdatePlayerMovement()

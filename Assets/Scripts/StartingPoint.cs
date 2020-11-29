@@ -10,17 +10,13 @@ public class StartingPoint : MonoBehaviour
         {
             return;
         }
-        if (Inventory.Instance.HasItemOfType(ItemType.Coin))
+        if (!GameState.CurrentLevel.WinConditionMet)
         {
-            MessageView.Instance.SetMessage("Hey! Don’t forget to place all coins in the level. Otherwise the next adventurer will be unable to complete the puzzle");
-        }
-        else if (Inventory.Instance.HasItemOfType(ItemType.Key))
-        {
-            MessageView.Instance.SetMessage("Hey! Don’t forget to place all the keys in the level. Otherwise the next adventurer will be unable to complete the puzzle");
+            GameState.CurrentMessageView.SetMessage("Hey! Don’t forget to place all the keys and coins in the level. Otherwise the next adventurer will be unable to complete the puzzle");
         }
         else
         {
-            Level.Instance.EndLevel(true);
+            GameState.CurrentLevel.EndLevel(true);
         }
         
     }
@@ -30,6 +26,6 @@ public class StartingPoint : MonoBehaviour
         {
             return;
         }
-        MessageView.Instance.SetMessage("");
+        GameState.CurrentMessageView.SetMessage("");
     }
 }

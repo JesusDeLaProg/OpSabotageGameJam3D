@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public Level currentLevel;
     HUD currentHUD;
 
     private bool LevelEndTransitionStarted = false;
@@ -34,33 +33,33 @@ public class LevelManager : MonoBehaviour
         LevelEndTransitionEnded = false;
         HUDTransitionStarted = false;
         HUDTransitionEnded = false;
-        currentLevel = Level.Instance;
-        LoadHUD(currentLevel.HUD);
-        currentLevel.LevelSetupFinished += (object level) => { Debug.Log("Level Manager : Level setup finished"); }; // Activate Player Controller
+        GameState.CurrentLevel = Level.Instance;
+        LoadHUD(GameState.CurrentLevel.HUD);
+        GameState.CurrentLevel.LevelSetupFinished += (object level) => { Debug.Log("Level Manager : Level setup finished"); }; // Activate Player Controller
 
-        currentLevel.LevelEnded += (object level, bool? victory) =>
+        GameState.CurrentLevel.LevelEnded += (object level, bool? victory) =>
         {
             Debug.Log("Level Manager : Level Ended (" + (victory.HasValue ? (victory.Value ? "Victory" : "Defeat") : "Neutral") + ")");
             // Deactivate Player controler
             LevelEndTransitionStarted = true;
-            NextLevel = (!victory.HasValue || victory.Value) ? currentLevel.NextLevelName : currentLevel.SceneName;
+            NextLevel = (!victory.HasValue || victory.Value) ? GameState.CurrentLevel.NextLevelName : GameState.CurrentLevel.SceneName;
             if (victory.HasValue)
             {
-                if (victory.Value && currentLevel.VictoryHUD != null)
+                if (victory.Value && GameState.CurrentLevel.VictoryHUD != null)
                 {
                     Debug.Log("Level Manager : Loading Victory HUD");
                     HUDTransitionStarted = true;
-                    LoadHUD(currentLevel.VictoryHUD);
+                    LoadHUD(GameState.CurrentLevel.VictoryHUD);
                 }
-                else if (!victory.Value && currentLevel.DefeatHUD != null)
+                else if (!victory.Value && GameState.CurrentLevel.DefeatHUD != null)
                 {
                     Debug.Log("Level Manager : Loading Defeat HUD");
                     HUDTransitionStarted = true;
-                    LoadHUD(currentLevel.DefeatHUD);
+                    LoadHUD(GameState.CurrentLevel.DefeatHUD);
                 }
             }
         };
-        currentLevel.LevelTransitionFinished += (object level) =>
+        GameState.CurrentLevel.LevelTransitionFinished += (object level) =>
         {
             Debug.Log("Level Manager : Level transition ended");
             LevelEndTransitionEnded = true;
