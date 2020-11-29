@@ -175,9 +175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterObj: {fileID: 0}
-  SmoothFactor: 0.1
+  SmoothFactor: 0.5
   LookAtPlayer: 0
   RotateAroundPlayer: 1
   RotationsSpeed: 2.5
-  x: 156.8171
-  y: 15.9227
+  x: 120
+  y: 45

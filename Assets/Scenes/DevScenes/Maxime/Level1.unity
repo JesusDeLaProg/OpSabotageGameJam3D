@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18337175, g: 0.22722031, b: 0.29587427, a: 1}
+  m_IndirectSpecularColor: {r: 0.18337148, g: 0.22722, b: 0.2958738, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2339,6 +2339,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1921952416}
     m_Modifications:
+    - target: {fileID: -45910578054014511, guid: e6d3770b7d3f2bd4c9a117abbddfc7d2,
+        type: 3}
+      propertyPath: Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127993727597117311, guid: e6d3770b7d3f2bd4c9a117abbddfc7d2,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023584080490028872, guid: e6d3770b7d3f2bd4c9a117abbddfc7d2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20498c74cf1736d45b719f321863a0e7, type: 2}
     - target: {fileID: 6486086737005483473, guid: e6d3770b7d3f2bd4c9a117abbddfc7d2,
         type: 3}
       propertyPath: m_Name
@@ -11971,12 +11986,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterObj: {fileID: 523824253}
-  SmoothFactor: 0.05
+  SmoothFactor: 0.5
   LookAtPlayer: 0
   RotateAroundPlayer: 1
   RotationsSpeed: 2.5
-  x: -796.379
-  y: 19.04777
+  x: 0
+  y: 0
 --- !u!114 &695282681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16281,6 +16296,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4220668105420219228, guid: b8384b6640689104da2d40cec3f21411,
     type: 3}
   m_PrefabInstance: {fileID: 1095547622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1101081828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1131809940523885034, guid: 639aea3165d50f74485196b4e184b7ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1131809940509803573}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1101836530
 PrefabInstance:
@@ -25201,20 +25222,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3712495295268944833, guid: 15177798c8bb53f4d92fc7949220e4be,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5251066618966885596, guid: 15177798c8bb53f4d92fc7949220e4be,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720338233096234252, guid: 15177798c8bb53f4d92fc7949220e4be,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15177798c8bb53f4d92fc7949220e4be, type: 3}
@@ -30373,7 +30384,7 @@ PrefabInstance:
         type: 3}
       propertyPath: BadGuy
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1101081828}
     - target: {fileID: 2428318805628141317, guid: 2390b1801ca1fab4ea60477ce7a30267,
         type: 3}
       propertyPath: m_LocalPosition.x
