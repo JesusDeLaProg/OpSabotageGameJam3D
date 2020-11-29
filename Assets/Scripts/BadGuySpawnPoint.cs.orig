@@ -13,24 +13,30 @@ public class BadGuySpawnPoint : MonoBehaviour, IInteractble
 
     public void OnEnterRange() 
     {
-        if (!BadGuy.IsActiveSingle)
-        {
-            InteractionView.Instance.Active("Revive!");
-        }
+        InteractionView.Instance.Active("Revive!");
     }
 
     public void OnExitRange()
     {
-        if (!BadGuy.IsActiveSingle)
-        {
-            InteractionView.Instance.Active("");
-        }
+        InteractionView.Instance.Active("");
     }
 
     public void OnInteract()
     {
+<<<<<<< HEAD
+        CharacterMovement._respawnBadGuy?.Invoke();
+        CharacterMovement.Active = false;
+        var awaiter = Task.Delay(1500).GetAwaiter();
+        awaiter.OnCompleted(() =>
+        {
+            gameObject.SetActive(false);
+            BadGuy.SetActive(true);
+            CharacterMovement.Active = true;
+        });
+=======
       //  gameObject.SetActive(false);
         BadGuy.Activate();
-        InteractionView.Instance.Active("");
+        
+>>>>>>> main
     }
 }
