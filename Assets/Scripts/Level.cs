@@ -44,6 +44,7 @@ public class Level : MonoBehaviour
         LevelEnded?.Invoke(this, victory);
         await PlayEndLevelTransition(victory);
         LevelTransitionFinished?.Invoke(this);
+        CharacterMovement._levelEnded?.Invoke();
     }
 
     public async virtual Task PlayEndLevelTransition(bool? victory)
