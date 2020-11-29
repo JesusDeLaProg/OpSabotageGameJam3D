@@ -7,6 +7,7 @@ public class AutoPickup : MonoBehaviour, IInteractble
     public Material Transparant;
     public Material Normal;
     public MeshRenderer Mesh;
+    public GameObject Particles;
 
     public float interactionRange => 0.2f;
 
@@ -45,12 +46,14 @@ public class AutoPickup : MonoBehaviour, IInteractble
     public void Pickup()
     {
         isThere = false;
+        Particles.SetActive(true);
         UpdateMesh();
     }
 
     public void Drop()
     {
         isThere = true;
+        Particles.SetActive(true);
         UpdateMesh();
     }
 
