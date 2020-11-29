@@ -30,12 +30,12 @@ public class BadGuySpawnPoint : MonoBehaviour, IInteractble
     public void OnInteract()
     {
       //  gameObject.SetActive(false);
-        BadGuy.Activate();
+    
         CharacterMovement._respawnBadGuy?.Invoke();
         CharacterMovement.Active = false;
         var awaiter = Task.Delay(1500).GetAwaiter();
-        awaiter.OnCompleted(() => CharacterMovement.Active = true);
-        GameState.CurrentInventory.WakeupBaddy();
+        awaiter.OnCompleted(() => { CharacterMovement.Active = true; BadGuy.Activate(); });
         GameState.CurrentInteractionView.Active("");
+        GameState.CurrentInventory.WakeupBaddy();
     }
 }

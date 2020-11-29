@@ -19,6 +19,10 @@ public class Level1 : Level
         GameState.CurrentInventory.BaddiesToWakeup = 1;
     }
 
+    public async override Task PlayEndLevelTransition(bool? victory)
+    {
+
+    }
 
     public override bool WinConditionMet
     {
@@ -33,5 +37,4 @@ public class Level1 : Level
             return false;
         }
     }
-
 }
