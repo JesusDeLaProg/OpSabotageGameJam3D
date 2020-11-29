@@ -6,8 +6,9 @@ public class AutoPickup : MonoBehaviour, IInteractble
 {
     public Material Transparant;
     public Material Normal;
+    public MeshRenderer Mesh;
 
-    public float interactionRange => 2f;
+    public float interactionRange => 0.2f;
 
     public bool isAutoPickup => true;
 
@@ -55,6 +56,6 @@ public class AutoPickup : MonoBehaviour, IInteractble
 
     private void UpdateMesh()
     {
-        GetComponent<MeshRenderer>().material = isThere ? Normal : Transparant;
+        Mesh.material = isThere ? Normal : Transparant;
     }
 }
