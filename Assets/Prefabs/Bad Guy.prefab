@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 1131809940523885008}
   - component: {fileID: 1131809940523885009}
   - component: {fileID: 1131809940523885014}
-  - component: {fileID: 1131809940523885015}
+  - component: {fileID: 3991188802122482930}
   - component: {fileID: 1131809940523885012}
   - component: {fileID: 1131809940523885013}
   - component: {fileID: -1671298244416779886}
@@ -4897,8 +4897,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1131809940523885015
-CapsuleCollider:
+--- !u!65 &3991188802122482930
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4907,10 +4907,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 1.75
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.1, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.75, y: 2, z: 1.75}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &1131809940523885012
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4941,8 +4940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf61a04d2d3e4b4d865cd00b46a56de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 7
   _turnSpeed: 4
+  DeadCollider: {fileID: 3991188802122482930}
   Particles: {fileID: 193144317972804411}
   PathPoints: []
   Loop: 0

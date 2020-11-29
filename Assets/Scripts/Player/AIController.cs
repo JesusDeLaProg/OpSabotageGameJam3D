@@ -13,6 +13,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float _speed = 4;
     [SerializeField] private float _turnSpeed = 2f;
     CharacterController _characterController;
+    [SerializeField] BoxCollider DeadCollider;
 
     public GameObject Particles;
     public Transform[] PathPoints = { };
@@ -69,6 +70,7 @@ public class AIController : MonoBehaviour
             pathPositions = (new Vector3[] { transform.position }).Concat(PathPoints.Select(t => t.position)).ToList();
             currentTargetIndex = 1;
             currentTarget = pathPositions[1];
+            DeadCollider.enabled = false;
             IsActiveSingle = true;
             Particles.SetActive(true);
         });
