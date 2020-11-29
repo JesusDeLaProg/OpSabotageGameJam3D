@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     public static bool Active = false;
     public static Action _levelEnded;
     public static Action _respawnBadGuy;
+    public static Action _victory;
     private Vector2 _direction;
 
     [SerializeField] private float _speed = 4;
@@ -21,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _levelEnded += OnLevelEnded;
         _respawnBadGuy += OnRespawnBadGuy;
+        _victory += OnVictory;
     }
 
     // Update is called once per frame
@@ -91,6 +93,11 @@ public class CharacterMovement : MonoBehaviour
     private void OnRespawnBadGuy()
     {
         _animator.SetTrigger("Respawn");
+    }
+
+    private void OnVictory()
+    {
+        _animator.SetTrigger("Victory");
     }
 
     private void OnLevelEnded()
