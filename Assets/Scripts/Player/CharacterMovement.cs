@@ -23,6 +23,12 @@ public class CharacterMovement : MonoBehaviour
         _respawnBadGuy += OnRespawnBadGuy;
     }
 
+    private void OnDestroy()
+    {
+        _levelEnded -= OnLevelEnded;
+        _respawnBadGuy -= OnRespawnBadGuy;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {

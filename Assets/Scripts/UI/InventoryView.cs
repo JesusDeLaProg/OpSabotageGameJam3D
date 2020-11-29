@@ -14,6 +14,11 @@ public abstract class InventoryView : MonoBehaviour
         UpdateView();
     }
 
+    private void OnDestroy()
+    {
+        GameState.CurrentInventory.InventoryChanged -= OnAmountChanged;
+    }
+
     private void OnAmountChanged(InventoryChangedEventType eventType, ItemType itemType)
     {
         if (itemType == Type)
